@@ -75,6 +75,23 @@ curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
 
 **Codex** — same paths under `~/.agents/skills/hb/` and `~/.agents/agents/`.
 
+**PDF assets (required for curl installs — same for all three tools)**
+
+`SKILL.md` alone will not produce a PDF at STEP 5. Fetch the template and the converter too.
+
+```bash
+BASE=https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
+SKILL=~/.claude/skills/hb        # ~/.cursor/skills/hb for Cursor, ~/.agents/skills/hb for Codex
+
+mkdir -p $SKILL/templates $SKILL/scripts
+curl -fsSL $BASE/templates/report.html  -o $SKILL/templates/report.html
+curl -fsSL $BASE/scripts/make-pdf.ps1   -o $SKILL/scripts/make-pdf.ps1   # Windows
+curl -fsSL $BASE/scripts/make-pdf.sh    -o $SKILL/scripts/make-pdf.sh    # macOS · Linux
+chmod +x $SKILL/scripts/make-pdf.sh
+```
+
+Skipping this does not break the skill: without the template it builds HTML with inlined CSS, and without a converter it keeps the HTML and tells you to print from the browser. The layout will just differ between runs.
+
 **Web AI** — paste the block in [`PROMPT.md`](./PROMPT.md) into project instructions / Custom GPT Instructions / Gem instructions.
 
 ### Project scope
@@ -146,7 +163,8 @@ Run several in parallel when the sweep spans multiple sectors or peer companies.
 .agents/agents/hb-agent.md      Codex sub-agent
 PROMPT.md                       Web-AI prompt edition
 templates/report.html           PDF report template (inlined CSS, A4)
-scripts/make-pdf.ps1            HTML → PDF via headless Chrome/Edge
+scripts/make-pdf.ps1            HTML → PDF, Windows
+scripts/make-pdf.sh             HTML → PDF, macOS · Linux
 config/domains.default.json     Default industry domains
 ```
 

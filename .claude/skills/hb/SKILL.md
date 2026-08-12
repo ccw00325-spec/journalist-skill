@@ -227,21 +227,33 @@ STEP 0 결과를 **네 줄로** 보고하고 사용자 확인을 받는다.
 
 ## 생성 절차
 
+`<스킬폴더>` = 이 SKILL.md가 들어 있는 디렉터리(예: `~/.claude/skills/hb/`).
+
 1. 작업 디렉터리에 `hb-output/<YYYY-MM-DD>/` 를 만든다.
-2. `hb_<YYYYMMDD>_<HHmm>.html` 로 위 내용을 쓴다. **템플릿과 CSS는 `templates/report.html` 를 그대로 쓴다** (스킬 폴더 기준 상대 경로). 템플릿이 없으면 스킬 폴더의 사본을 복사해 쓴다.
-3. PDF로 변환한다.
+2. `hb_<YYYYMMDD>_<HHmm>.html` 로 위 내용을 쓴다.
+   - `<스킬폴더>/templates/report.html` **이 있으면 그 템플릿과 CSS를 그대로 쓴다.**
+   - **없으면 직접 만든다.** CSS를 `<style>`에 인라인하고 `@page { size: A4; margin: 16mm 14mm 18mm 14mm; }` 와 한글 폰트(`"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif`)를 넣는다. 외부 CSS·폰트·이미지는 부르지 않는다. **템플릿이 없다는 건 중단 사유가 아니다.**
+3. PDF로 변환한다. `<스킬폴더>/scripts/` 의 스크립트를 먼저 찾는다.
    ```powershell
+   # Windows
    & "<스킬폴더>/scripts/make-pdf.ps1" -HtmlPath "<...>.html"
    ```
-   스크립트가 없으면 Chrome/Edge를 직접 호출한다.
-   ```powershell
-   & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
-     --no-pdf-header-footer --print-to-pdf="<...>.pdf" "file:///<...>.html"
+   ```bash
+   # macOS · Linux
+   bash "<스킬폴더>/scripts/make-pdf.sh" "<...>.html"
+   ```
+   스크립트가 없으면 브라우저를 직접 호출한다. 실행 파일 이름이 OS마다 다르니 있는 것을 찾아 쓴다.
+   ```bash
+   # PATH 후보: google-chrome · chromium · chromium-browser · microsoft-edge · brave-browser
+   # macOS:   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+   # Windows: "C:\Program Files\Google\Chrome\Application\chrome.exe"
+   <브라우저> --headless=new --disable-gpu --no-pdf-header-footer \
+     --print-to-pdf="<...>.pdf" "file://<...>.html"
    ```
 4. HTML과 PDF **둘 다 남긴다.** 수정·재출력이 쉬워진다.
 5. 사용자에게 **저장 경로 + 발제 건수 + 기사 글자 수**를 세 줄로 보고한다. 기사 전문은 대화에도 인라인으로 함께 남긴다.
 
-PDF 생성에 실패하면 **HTML 경로를 안내하고 브라우저 인쇄(Ctrl+P → PDF로 저장)를 안내한다.** 파이프라인 결과물을 잃지 않는다.
+**브라우저가 없거나 변환이 실패해도 결과물을 잃지 않는다.** HTML을 남기고 경로와 함께 이렇게 알린다 — "PDF 변환기(Chrome/Edge)를 찾지 못했습니다. HTML을 브라우저에서 열고 Ctrl+P(⌘P) → 'PDF로 저장'을 쓰시면 같은 결과물이 나옵니다." **PDF 실패를 이유로 STEP 5를 중단하지 않는다.**
 
 ---
 
@@ -270,7 +282,7 @@ PDF 생성에 실패하면 **HTML 경로를 안내하고 브라우저 인쇄(Ctr
 | 본문·발행일시 확인 | `WebFetch` |
 | 도메인 저장 | `Write` → `~/.claude/hb/domains.json` |
 | 산출물 | `Write` → `hb-output/<날짜>/*.html` |
-| PDF | `PowerShell` → `scripts/make-pdf.ps1` (Chrome/Edge headless) |
+| PDF | `PowerShell` → `scripts/make-pdf.ps1` · `Bash` → `scripts/make-pdf.sh` (Chrome/Edge headless) |
 | 윤문(선택) | `Skill: humanize-korean` |
 | 병렬 조사 | `Agent: hb-agent` — 업종·기업별 근거 수집을 나눠 맡길 때 |
 

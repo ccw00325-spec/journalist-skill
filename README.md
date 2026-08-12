@@ -98,6 +98,23 @@ curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
   -o ~/.agents/agents/hb-agent.md
 ```
 
+**PDF 출력 파일 (curl 설치자 필수 · 3종 공통)**
+
+`SKILL.md` 만 받으면 STEP 5에서 PDF가 안 나온다. 템플릿과 변환 스크립트를 같이 받아야 한다.
+
+```bash
+BASE=https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
+SKILL=~/.claude/skills/hb        # Cursor면 ~/.cursor/skills/hb, Codex면 ~/.agents/skills/hb
+
+mkdir -p $SKILL/templates $SKILL/scripts
+curl -fsSL $BASE/templates/report.html  -o $SKILL/templates/report.html
+curl -fsSL $BASE/scripts/make-pdf.ps1   -o $SKILL/scripts/make-pdf.ps1   # Windows
+curl -fsSL $BASE/scripts/make-pdf.sh    -o $SKILL/scripts/make-pdf.sh    # macOS · Linux
+chmod +x $SKILL/scripts/make-pdf.sh
+```
+
+빠뜨려도 스킬은 멈추지 않는다. 템플릿이 없으면 CSS를 인라인한 HTML을 직접 만들고, 변환기가 없으면 HTML만 남기고 브라우저 인쇄를 안내한다. 다만 매번 조판을 새로 짜므로 결과물이 회차마다 달라진다.
+
 **웹 AI (Claude.ai · ChatGPT · Gemini)**
 [`PROMPT.md`](./PROMPT.md) 의 블록을 복사해 프로젝트 지침 / Custom GPT Instructions / Gem 지침에 붙여넣는다.
 
@@ -175,7 +192,8 @@ PDF는 Chrome/Edge 헤드리스로 뽑는다. 외부 의존성이 없고 한글�
 .agents/agents/hb-agent.md      Codex 서브에이전트
 PROMPT.md                       웹 AI용 프롬프트본
 templates/report.html           PDF 리포트 템플릿 (CSS 내장, A4)
-scripts/make-pdf.ps1            HTML → PDF 변환 (Chrome/Edge headless)
+scripts/make-pdf.ps1            HTML → PDF 변환 · Windows
+scripts/make-pdf.sh             HTML → PDF 변환 · macOS · Linux
 config/domains.default.json     기본 산업 도메인
 ```
 
