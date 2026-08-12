@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # HB 발제 리포트 HTML을 PDF로 변환한다 (Chrome/Chromium/Edge headless).
 #
-#   ./make-pdf.sh ./hb-output/2026-08-12/hb_20260812_1420.html
+#   ./make-pdf.sh ./HB_Output/2026_08_12output.html
 #   ./make-pdf.sh ./report.html ./report.pdf
 #
 # 종료 코드: 0 성공 / 1 변환 실패 / 2 브라우저 없음 (둘 다 HTML 경로를 안내)

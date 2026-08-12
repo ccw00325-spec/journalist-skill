@@ -3,7 +3,7 @@
   HB 발제 리포트 HTML을 PDF로 변환한다 (Chrome/Edge headless).
 
 .EXAMPLE
-  .\make-pdf.ps1 -HtmlPath ".\hb-output\2026-08-12\hb_20260812_1430.html"
+  .\make-pdf.ps1 -HtmlPath ".\HB_Output\2026_08_12output.html"
   .\make-pdf.ps1 -HtmlPath ".\report.html" -PdfPath ".\report.pdf"
 #>
 [CmdletBinding()]

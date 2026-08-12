@@ -155,7 +155,16 @@ chmod +x $SKILL/scripts/make-pdf.sh
 
 ## 결과물
 
-`hb-output/<날짜>/hb_<YYYYMMDD>_<HHmm>.pdf` (HTML 원본도 함께 남는다)
+CLI가 접근 권한을 승인받은 **작업 폴더 바로 아래**에 `HB_Output/` 을 만들고 그 안에 넣는다.
+
+```
+<작업폴더>/HB_Output/2026_08_12output.pdf
+<작업폴더>/HB_Output/2026_08_12output.html    ← 수정·재출력용 원본
+```
+
+파일명은 `YYYY_MM_DDoutput`. 같은 날 두 번 돌리면 `2026_08_12output_2.pdf` 로 붙어 앞 결과를 덮어쓰지 않는다.
+
+폴더는 `mkdir` 로 만든 뒤 존재 여부를 확인하고 넘어간다. 만들지 못하면 (권한 없는 위치 등) 그 자리에서 멈추고 사용자에게 알린다 — 파일부터 쓰다 조용히 실패하는 일이 없도록 한 장치다.
 
 PDF 구성 순서:
 

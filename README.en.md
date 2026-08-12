@@ -129,7 +129,16 @@ Domain changes persist to `~/.claude/hb/domains.json` and apply to later calls. 
 
 ## Output
 
-`hb-output/<date>/hb_<YYYYMMDD>_<HHmm>.pdf`, with the source HTML kept alongside.
+Written to `HB_Output/` directly under the working directory the CLI was granted access to.
+
+```
+<workdir>/HB_Output/2026_08_12output.pdf
+<workdir>/HB_Output/2026_08_12output.html    ← source, for edits and re-renders
+```
+
+Filenames follow `YYYY_MM_DDoutput`. A second run on the same day becomes `2026_08_12output_2.pdf` — earlier reports are never overwritten.
+
+The directory is created with `mkdir` and then verified before anything is written. If creation fails (unwritable location, missing permission) the skill stops and says so, rather than writing files into a directory that does not exist.
 
 1. **Cover** — generation time, search window, domains, candidate count
 2. **All pitch candidates** — including the ones not chosen, with `★` on the selected one. Each carries the angle, the highlighted fact, the trigger source with **publication date and time**, and each supporting fact with its own source
