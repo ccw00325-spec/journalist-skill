@@ -1,6 +1,8 @@
 # HB Skill — Industry Story-Pitch & Article Pipeline
 
-An AI skill that reproduces how a 20-year senior industry-desk reporter actually works. **It takes one fact out of a trigger story published within the last 7 days, builds a new angle on it, backs that angle with at least two independent pieces of evidence found *outside* the trigger story, stress-tests it against the strongest counterargument, and writes the finished article.** The deliverable is a PDF containing every pitch candidate plus the final article.
+An AI skill that reproduces how a 20-year senior industry-desk reporter actually works. **It runs in two phases: first it builds story-pitch candidates and hands them to you, then it deep-reports and writes only the one you pick.** The deliverable is a PDF containing every candidate with its verdict grid, the finished article, and a per-FACT source table.
+
+A pitch here means: catch one **specific fact** in a recent event, find the **question** it raises that nobody has answered yet, and **verify that question against independent evidence** — never against a guess. `FACT → QUESTION → independent FACT → verification → angle → your choice → deeper verification → article`.
 
 Works in Claude Code, Cursor, Codex, and web AI (Claude.ai, ChatGPT, Gemini).
 
@@ -171,7 +173,8 @@ Run several in parallel when the sweep spans multiple sectors or peer companies.
 .agents/skills/hb/SKILL.md      Codex skill
 .agents/agents/hb-agent.md      Codex sub-agent
 PROMPT.md                       Web-AI prompt edition
-templates/report.html           PDF report template (inlined CSS, A4)
+templates/report.html           PDF report template (inlined CSS, A4, per-candidate verdict grid)
+examples/regression-tests.md    Regression test scenarios
 scripts/make-pdf.ps1            HTML → PDF, Windows
 scripts/make-pdf.sh             HTML → PDF, macOS · Linux
 config/domains.default.json     Default industry domains
