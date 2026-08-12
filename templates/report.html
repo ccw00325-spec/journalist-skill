@@ -278,7 +278,8 @@
     <div class="sub">{{DOMAIN_LINE}}</div>
     <dl class="meta">
       <dt>생성 일시</dt><dd>{{GENERATED_AT}}</dd>
-      <dt>탐색 창</dt><dd>{{WINDOW_FROM}} ~ {{WINDOW_TO}} (최근 7일)</dd>
+      <dt>핵심 창</dt><dd>{{WINDOW_FROM}} ~ {{WINDOW_TO}} (7일 · 트리거 우선)</dd>
+      <dt>확장 창</dt><dd>{{WINDOW_EXT_FROM}} ~ {{WINDOW_FROM}} (예비 3일 · {{WINDOW_EXT_USED}})</dd>
       <dt>도메인</dt><dd>{{DOMAINS}}</dd>
       <dt>발제 후보</dt><dd>{{PITCH_COUNT}}건 · 선정 {{PICKED_NO}}번</dd>
     </dl>
@@ -349,7 +350,8 @@
     <!-- 산업 정합성: 다섯 요소가 모두 같은 산업이어야 5번이 O가 된다 -->
     <div class="legend">
       <strong>산업 정합성</strong> — 발제 {{IND_PITCH}} · 트리거 {{IND_TRIGGER}} · 조명 사실 {{IND_FACT}} · 질문 {{IND_QUESTION}} · 근거 {{IND_GROUNDS}}<br>
-      <strong>과포화 점검</strong> — 보도량 {{COVERAGE_VOLUME}} · 관심도 {{INTEREST_LEVEL}} → {{SATURATION_CHECK}}
+      <strong>과포화 점검</strong> — 보도량 {{COVERAGE_VOLUME}} · 관심도 {{INTEREST_LEVEL}} → {{SATURATION_CHECK}}<br>
+      <strong>창 구분</strong> — {{WINDOW_TIER}}
     </div>
 
     <!-- 7체크 판정 — 값은 O / △ / X, class는 ok / warn / bad -->
