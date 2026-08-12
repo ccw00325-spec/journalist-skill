@@ -138,6 +138,44 @@
     font-size: 10pt;
   }
 
+  /* ── 후보별 7체크 판정표 (O 확실 / △ 애매 / X 미충족) ── */
+  table.mini-checks {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 9px 0 0;
+    font-size: 8pt;
+    table-layout: fixed;
+  }
+  table.mini-checks th,
+  table.mini-checks td {
+    border: 1px solid var(--line-2);
+    padding: 3px 2px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.35;
+  }
+  table.mini-checks th {
+    background: var(--tag-bg);
+    color: var(--ink-3);
+    font-weight: 600;
+    word-break: keep-all;
+  }
+  table.mini-checks td { font-size: 11pt; font-weight: 700; }
+  table.mini-checks td.ok   { color: #1c6b34; }   /* O */
+  table.mini-checks td.warn { color: #9a6a12; }   /* △ */
+  table.mini-checks td.bad  { color: var(--accent); } /* X */
+  table.mini-checks th.g, table.mini-checks td.g {
+    width: 36px;
+    border-left: 2px solid var(--ink-3);
+  }
+  td.g .grade { font-size: 11.5pt; font-weight: 700; }
+  td.g .grade.a { color: #1c6b34; }
+  td.g .grade.b { color: #9a6a12; }
+  td.g .grade.c { color: var(--accent); }
+
+  .verdict-note { font-size: 8.3pt; color: var(--ink-3); margin-top: 4px; }
+  .legend { font-size: 8pt; color: var(--ink-3); margin: 4px 0 14px; }
+
   /* ── 7체크 표 ── */
   table.checks {
     width: 100%;
@@ -281,9 +319,59 @@
       </ol>
     </div>
 
+    <div class="field">
+      <span class="label">반대 또는 제한 근거</span>
+      {{COUNTER_EVIDENCE}}
+    </div>
+
+    <div class="field">
+      <span class="label">이 근거로 말할 수 있는 범위</span>
+      {{PITCH_SCOPE}}
+    </div>
+
     <div class="yama"><strong>야마</strong> — {{PITCH_YAMA}}</div>
+
+    <!-- 산업 정합성: 다섯 요소가 모두 같은 산업이어야 5번이 O가 된다 -->
+    <div class="legend"><strong>산업 정합성</strong> — 발제 {{IND_PITCH}} · 트리거 {{IND_TRIGGER}} · 조명 사실 {{IND_FACT}} · 질문 {{IND_QUESTION}} · 근거 {{IND_GROUNDS}}</div>
+
+    <!-- 7체크 판정 — 값은 O / △ / X, class는 ok / warn / bad -->
+    <table class="mini-checks">
+      <thead>
+        <tr>
+          <th>1 트리거<br>명확성</th>
+          <th>2 독립근거<br>2건 이상</th>
+          <th>3 수치<br>성격 구분</th>
+          <th>4 원인 확인<br>(추정 금지)</th>
+          <th>5 동일 기준<br>·산업 일치</th>
+          <th>6 최강 반론<br>생존</th>
+          <th>7 공개 근거만<br>으로 성립</th>
+          <th class="g">등급</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ok">{{CHK_1}}</td>
+          <td class="ok">{{CHK_2}}</td>
+          <td class="ok">{{CHK_3}}</td>
+          <td class="warn">{{CHK_4}}</td>
+          <td class="ok">{{CHK_5}}</td>
+          <td class="ok">{{CHK_6}}</td>
+          <td class="ok">{{CHK_7}}</td>
+          <td class="g"><span class="grade b">{{GRADE}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-note">{{VERDICT_NOTE}}</div>
   </article>
   <!-- /반복 단위 -->
+
+  <div class="legend">
+    판정 표기 — <strong style="color:#1c6b34">O</strong> 확실(공개 자료로 확인 완료) ·
+    <strong style="color:#9a6a12">△</strong> 애매(일부만 확인 또는 자료 엇갈림) ·
+    <strong style="color:#8f1d1d">X</strong> 미충족(확인 실패 또는 명백히 어긋남).
+    등급은 O=1 · △=0.5 · X=0 합산 — A 6.0점 이상 / B 4.5점 이상.
+    <strong>1·2번이 X거나 5번이 O가 아니면 등급과 무관하게 후보 자격 미달.</strong>
+  </div>
 
   <!-- ══ 2. 선정 발제 심화 ══ -->
   <h2 class="sec">선정 발제 검증</h2>
