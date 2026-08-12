@@ -1,0 +1,14 @@
+# HB 산출물 — 발제 리포트는 저장소에 커밋하지 않는다
+hb-output/
+
+# 사용자별 도메인 설정 (기본값은 config/domains.default.json)
+hb/domains.json
+
+# OS
+Thumbs.db
+.DS_Store
+
+# 편집기
+.vscode/
+.idea/
+*.swp

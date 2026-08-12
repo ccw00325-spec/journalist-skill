@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>HB 발제 리포트 — {{DATE}}</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm 18mm 14mm; }
+
+  :root {
+    --ink:      #14181d;
+    --ink-2:    #3d454f;
+    --ink-3:    #6b7480;
+    --line:     #d7dbe0;
+    --line-2:   #eceef1;
+    --accent:   #8f1d1d;
+    --accent-2: #1b4d7a;
+    --tag-bg:   #f2f4f6;
+    --pick-bg:  #fdf6ec;
+    --pick-line:#c79a3c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.72;
+    color: var(--ink);
+    background: #fff;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .wrap { max-width: 190mm; margin: 0 auto; padding: 0 2mm; }
+
+  /* ── 표지 ── */
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0 12px;
+    margin-bottom: 18px;
+  }
+  .masthead h1 {
+    margin: 0 0 4px;
+    font-size: 19pt;
+    letter-spacing: -0.5px;
+  }
+  .masthead .sub { color: var(--ink-3); font-size: 9.5pt; }
+
+  .meta {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 2px 10px;
+    margin: 12px 0 0;
+    font-size: 9.5pt;
+  }
+  .meta dt { color: var(--ink-3); }
+  .meta dd { margin: 0; color: var(--ink-2); }
+
+  /* ── 섹션 ── */
+  h2.sec {
+    font-size: 12.5pt;
+    margin: 26px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--ink);
+    letter-spacing: -0.3px;
+  }
+  h2.sec .count { float: right; font-size: 9.5pt; font-weight: 400; color: var(--ink-3); }
+
+  /* ── 발제 카드 ── */
+  .card {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--ink-3);
+    padding: 12px 14px;
+    margin: 0 0 12px;
+    page-break-inside: avoid;
+  }
+  .card.picked {
+    border-left-color: var(--pick-line);
+    background: var(--pick-bg);
+  }
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 11.5pt;
+    line-height: 1.5;
+  }
+  .card h3 .no { color: var(--accent); margin-right: 6px; }
+  .badge {
+    display: inline-block;
+    background: var(--pick-line);
+    color: #fff;
+    font-size: 8pt;
+    padding: 1px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+
+  .field { margin: 8px 0 0; }
+  .field > .label {
+    display: block;
+    font-size: 8.5pt;
+    color: var(--ink-3);
+    letter-spacing: 0.6px;
+    margin-bottom: 2px;
+  }
+
+  .src {
+    font-size: 8.8pt;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+  .src .outlet { color: var(--accent-2); }
+  .src .time { font-variant-numeric: tabular-nums; }
+  .src a { color: var(--ink-3); text-decoration: none; border-bottom: 1px dotted var(--line); }
+
+  ol.grounds { margin: 4px 0 0; padding-left: 18px; }
+  ol.grounds > li { margin-bottom: 7px; }
+
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--line-2);
+    color: var(--ink-2);
+    font-size: 8pt;
+    padding: 0 5px;
+    border-radius: 2px;
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+
+  .yama {
+    margin-top: 9px;
+    padding: 7px 10px;
+    background: #f7f8f9;
+    border-left: 2px solid var(--ink-3);
+    font-size: 10pt;
+  }
+
+  /* ── 7체크 표 ── */
+  table.checks {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin: 8px 0 14px;
+  }
+  table.checks th, table.checks td {
+    border-bottom: 1px solid var(--line-2);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.checks thead th {
+    border-bottom: 1px solid var(--ink-3);
+    color: var(--ink-3);
+    font-size: 8.8pt;
+    font-weight: 600;
+  }
+  table.checks td.st { width: 44px; text-align: center; }
+
+  .counter {
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .counter .label { font-size: 8.5pt; color: var(--ink-3); letter-spacing: 0.6px; }
+
+  /* ── 기사 ── */
+  .article {
+    border-top: 3px double var(--ink);
+    margin-top: 30px;
+    padding-top: 20px;
+    page-break-before: always;
+  }
+  .article .kicker {
+    font-size: 9pt;
+    color: var(--accent);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .article h1 {
+    font-size: 21pt;
+    line-height: 1.32;
+    letter-spacing: -1px;
+    margin: 0 0 10px;
+  }
+  .article .deck {
+    margin: 0 0 16px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: 10.5pt;
+    line-height: 1.65;
+  }
+  .article .deck li { list-style: none; padding-left: 12px; text-indent: -12px; }
+  .article .deck li::before { content: "— "; color: var(--ink-3); }
+  .article .byline {
+    font-size: 9pt;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .article .body p { margin: 0 0 12px; text-align: justify; }
+  .article .body p.lead { font-size: 11pt; }
+
+  /* ── 출처 일람 ── */
+  ol.refs { font-size: 8.8pt; color: var(--ink-2); padding-left: 20px; line-height: 1.6; }
+  ol.refs li { margin-bottom: 5px; }
+  ol.refs a { color: var(--ink-3); text-decoration: none; }
+
+  .foot {
+    margin-top: 26px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    font-size: 8.5pt;
+    color: var(--ink-3);
+  }
+
+  .nodata { color: var(--ink-3); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══ 표지 ══ -->
+  <header class="masthead">
+    <h1>산업 발제 리포트</h1>
+    <div class="sub">{{DOMAIN_LINE}}</div>
+    <dl class="meta">
+      <dt>생성 일시</dt><dd>{{GENERATED_AT}}</dd>
+      <dt>탐색 창</dt><dd>{{WINDOW_FROM}} ~ {{WINDOW_TO}} (최근 7일)</dd>
+      <dt>도메인</dt><dd>{{DOMAINS}}</dd>
+      <dt>발제 후보</dt><dd>{{PITCH_COUNT}}건 · 선정 {{PICKED_NO}}번</dd>
+    </dl>
+  </header>
+
+  <!-- ══ 1. 발제 후보 전체 ══ -->
+  <h2 class="sec">발제 후보<span class="count">시의성 순 · {{PITCH_COUNT}}건</span></h2>
+
+  <!-- 반복 단위: 후보 1건당 .card 하나. 선정된 건에는 class="card picked" + .badge -->
+  <article class="card picked">
+    <h3><span class="no">발제 1.</span>{{PITCH_TITLE}}<span class="badge">★ 선정</span></h3>
+
+    <div class="field">
+      <span class="label">조명한 사실</span>
+      {{HIGHLIGHTED_FACT}}
+    </div>
+
+    <div class="field">
+      <span class="label">트리거 원문 출처</span>
+      <div class="src">
+        <span class="outlet">{{TRIGGER_OUTLET}}</span> |
+        {{TRIGGER_TITLE}} |
+        <span class="time">{{TRIGGER_DATETIME}}</span> |
+        <a href="{{TRIGGER_URL}}">{{TRIGGER_URL}}</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label">독립 근거</span>
+      <ol class="grounds">
+        <li>
+          {{GROUND_1_SUMMARY}}<span class="tag">{{GROUND_1_TAG}}</span>
+          <div class="src">
+            <span class="outlet">{{GROUND_1_OUTLET}}</span> |
+            {{GROUND_1_TITLE}} |
+            <span class="time">{{GROUND_1_DATETIME}}</span> |
+            <a href="{{GROUND_1_URL}}">{{GROUND_1_URL}}</a>
+          </div>
+        </li>
+        <li>
+          {{GROUND_2_SUMMARY}}<span class="tag">{{GROUND_2_TAG}}</span>
+          <div class="src">
+            <span class="outlet">{{GROUND_2_OUTLET}}</span> |
+            {{GROUND_2_TITLE}} |
+            <span class="time">{{GROUND_2_DATETIME}}</span> |
+            <a href="{{GROUND_2_URL}}">{{GROUND_2_URL}}</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="yama"><strong>야마</strong> — {{PITCH_YAMA}}</div>
+  </article>
+  <!-- /반복 단위 -->
+
+  <!-- ══ 2. 선정 발제 심화 ══ -->
+  <h2 class="sec">선정 발제 검증</h2>
+
+  <div class="field">
+    <span class="label">확정 야마</span>
+    <strong>{{FINAL_YAMA}}</strong>
+  </div>
+
+  <table class="checks">
+    <thead>
+      <tr><th style="width:26px">#</th><th>체크 항목</th><th class="st">판정</th><th>근거 · 비고</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>트리거 명확성 (7일 내)</td><td class="st">{{CHECK_1}}</td><td>{{CHECK_1_NOTE}}</td></tr>
+      <tr><td>2</td><td>독립 근거 2개 이상</td><td class="st">{{CHECK_2}}</td><td>{{CHECK_2_NOTE}}</td></tr>
+      <tr><td>3</td><td>수치 성격 구분</td><td class="st">{{CHECK_3}}</td><td>{{CHECK_3_NOTE}}</td></tr>
+      <tr><td>4</td><td>원인 확인 (추정 금지)</td><td class="st">{{CHECK_4}}</td><td>{{CHECK_4_NOTE}}</td></tr>
+      <tr><td>5</td><td>동일 기준 비교</td><td class="st">{{CHECK_5}}</td><td>{{CHECK_5_NOTE}}</td></tr>
+      <tr><td>6</td><td>최강 반론 생존</td><td class="st">{{CHECK_6}}</td><td>{{CHECK_6_NOTE}}</td></tr>
+      <tr><td>7</td><td>공개 근거만으로 성립</td><td class="st">{{CHECK_7}}</td><td>{{CHECK_7_NOTE}}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="counter">
+    <div class="label">가장 강한 반론</div>
+    <p style="margin:4px 0 8px">{{TOP_COUNTER}}</p>
+    <div class="src">{{TOP_COUNTER_SRC}}</div>
+    <div class="label" style="margin-top:12px">그래도 야마가 남는 이유</div>
+    <p style="margin:4px 0 8px">{{WHY_SURVIVES}}</p>
+    <div class="src">{{WHY_SURVIVES_SRC}}</div>
+  </div>
+
+  <div class="field">
+    <span class="label">미해결 항목</span>
+    {{OPEN_ITEMS}}
+  </div>
+
+  <!-- ══ 3. 완성 기사 ══ -->
+  <section class="article">
+    <div class="kicker">{{ARTICLE_KICKER}}</div>
+    <h1>{{ARTICLE_HEADLINE}}</h1>
+    <ul class="deck">
+      <li>{{ARTICLE_DECK_1}}</li>
+      <li>{{ARTICLE_DECK_2}}</li>
+      <li>{{ARTICLE_DECK_3}}</li>
+    </ul>
+    <div class="byline">{{ARTICLE_BYLINE}}</div>
+    <div class="body">
+      <p class="lead">{{ARTICLE_LEAD}}</p>
+      {{ARTICLE_BODY}}
+    </div>
+  </section>
+
+  <!-- ══ 4. 출처 일람 ══ -->
+  <h2 class="sec">출처 일람</h2>
+  <ol class="refs">
+    {{REFERENCES}}
+  </ol>
+
+  <div class="foot">
+    HB 발제 파이프라인 · 모든 사실은 공개 출처로 확인됨 · 추론·미확인 사항은 본문에 명시 · {{GENERATED_AT}}
+  </div>
+
+</div>
+</body>
+</html>
