@@ -168,6 +168,17 @@
     width: 36px;
     border-left: 2px solid var(--ink-3);
   }
+  /* 트리거 날짜 열 — 사용자가 최신 자료인지 한눈에 보게 한다 */
+  table.mini-checks th.d, table.mini-checks td.d {
+    width: 68px;
+    border-right: 2px solid var(--ink-3);
+  }
+  table.mini-checks td.d {
+    font-size: 8.2pt;
+    font-weight: 600;
+    color: var(--accent-2);
+    font-variant-numeric: tabular-nums;
+  }
   td.g .grade { font-size: 11.5pt; font-weight: 700; }
   td.g .grade.a { color: #1c6b34; }
   td.g .grade.b { color: #9a6a12; }
@@ -329,15 +340,23 @@
       {{PITCH_SCOPE}}
     </div>
 
-    <div class="yama"><strong>야마</strong> — {{PITCH_YAMA}}</div>
+    <!-- 묶는 방향 두 가지 — 어느 쪽이 기사가 될지는 사용자가 판단한다 -->
+    <div class="yama">
+      <strong>묶는 방향 A · 사실 그대로</strong> — {{DIRECTION_A}}<br>
+      <strong>묶는 방향 B · 다르게 묶기</strong> — {{DIRECTION_B}}
+    </div>
 
     <!-- 산업 정합성: 다섯 요소가 모두 같은 산업이어야 5번이 O가 된다 -->
-    <div class="legend"><strong>산업 정합성</strong> — 발제 {{IND_PITCH}} · 트리거 {{IND_TRIGGER}} · 조명 사실 {{IND_FACT}} · 질문 {{IND_QUESTION}} · 근거 {{IND_GROUNDS}}</div>
+    <div class="legend">
+      <strong>산업 정합성</strong> — 발제 {{IND_PITCH}} · 트리거 {{IND_TRIGGER}} · 조명 사실 {{IND_FACT}} · 질문 {{IND_QUESTION}} · 근거 {{IND_GROUNDS}}<br>
+      <strong>과포화 점검</strong> — {{SATURATION_CHECK}}
+    </div>
 
     <!-- 7체크 판정 — 값은 O / △ / X, class는 ok / warn / bad -->
     <table class="mini-checks">
       <thead>
         <tr>
+          <th class="d">트리거<br>날짜</th>
           <th>1 트리거<br>명확성</th>
           <th>2 독립근거<br>2건 이상</th>
           <th>3 수치<br>성격 구분</th>
@@ -350,6 +369,7 @@
       </thead>
       <tbody>
         <tr>
+          <td class="d">{{TRIGGER_DATE}}</td>
           <td class="ok">{{CHK_1}}</td>
           <td class="ok">{{CHK_2}}</td>
           <td class="ok">{{CHK_3}}</td>
@@ -357,11 +377,11 @@
           <td class="ok">{{CHK_5}}</td>
           <td class="ok">{{CHK_6}}</td>
           <td class="ok">{{CHK_7}}</td>
-          <td class="g"><span class="grade b">{{GRADE}}</span></td>
+          <td class="g"><span class="grade a">{{GRADE}}</span></td>
         </tr>
       </tbody>
     </table>
-    <div class="verdict-note">{{VERDICT_NOTE}}</div>
+    <div class="verdict-note">근거 날짜 — {{GROUND_DATES}}<br>{{VERDICT_NOTE}}</div>
   </article>
   <!-- /반복 단위 -->
 
@@ -370,8 +390,11 @@
     <strong style="color:#9a6a12">△</strong> 애매(일부만 확인 또는 자료 엇갈림) ·
     <strong style="color:#8f1d1d">X</strong> 미충족(확인 실패 또는 명백히 어긋남).
     등급은 O=1 · △=0.5 · X=0 합산 — A 6.0점 이상 / B 4.5점 이상.
-    <strong>1·2번이 X거나 5번이 O가 아니면 등급과 무관하게 후보 자격 미달.</strong>
+    <strong>제시 기준 — 체크 1·2·5는 O 필수(5번은 △도 불가), 나머지 4개 축에서 △는 최대 1개.</strong>
+    이 기준을 못 넘은 후보는 어차피 쓸 수 없으므로 카드로 싣지 않고 제외 건수·사유만 밝힌다.
   </div>
+
+  <div class="legend">제외된 후보 — {{EXCLUDED_SUMMARY}}</div>
 
   <!-- ══ 2. 선정 발제 심화 ══ -->
   <h2 class="sec">선정 발제 검증</h2>
