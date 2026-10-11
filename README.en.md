@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Useful AI Skills — Built for Real Work, Not Just Demos" width="100%">
+</p>
+
 # HB Skill — Industry Story-Pitch & Article Pipeline
 
 An AI skill that reproduces how a 20-year senior industry-desk reporter actually works. **It takes one fact out of a trigger story published within the last 7 days, builds a new angle on it, backs that angle with at least two independent pieces of evidence found *outside* the trigger story, stress-tests it against the strongest counterargument, and writes the finished article.** The deliverable is a PDF containing every pitch candidate plus the final article.
