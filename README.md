@@ -250,4 +250,6 @@ config/domains.default.json     기본 산업 도메인
 
 ---
 
-**License: MIT**
+## 라이선스
+
+Apache License 2.0을 적용합니다. 저작권은 Chan Woo Cho ([@ccw00325-spec](https://github.com/ccw00325-spec))에게 있습니다. 재배포 시 Apache 2.0 제4조에 따라 관련 저작권과 출처 고지를 보존해야 합니다. [LICENSE](LICENSE) · [NOTICE](NOTICE)

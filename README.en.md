@@ -189,4 +189,6 @@ Don't clone the whole repo into your working project — take only the files for
 
 ---
 
-**License:** MIT
+## License
+
+Apache License 2.0. Copyright 2026 Chan Woo Cho ([@ccw00325-spec](https://github.com/ccw00325-spec)). Retain applicable attribution notices when redistributing under Section 4. [LICENSE](LICENSE) · [NOTICE](NOTICE)
