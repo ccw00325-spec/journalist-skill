@@ -4,6 +4,13 @@ HB_Output/
 # 사용자별 도메인 설정 (기본값은 config/domains.default.json)
 hb/domains.json
 
+# 사람이 적는 실패 로그 (미공개 기획이 들어갈 수 있어 저장소에 올리지 않는다)
+hb/failure-log.jsonl
+
+# 비밀값
+.env
+.env.*
+
 # OS
 Thumbs.db
 .DS_Store
