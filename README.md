@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Useful AI Skills — Built for Real Work, Not Just Demos" width="100%">
+</p>
+
 # 산업 일일 발제 도우미
 
 산업 뉴스를 훑고도 “그래서 무엇을 기사로 써야 하나”가 선명하지 않을 때 쓰는 발제 지원 스킬입니다. 최근 기사와 공시, 기업 IR, 정부·협회 통계, 산업 자료에서 평소와 다른 숫자나 움직임을 찾고, 그 사실이 기사로 확장될 수 있는지 공개 자료로 검증합니다.
