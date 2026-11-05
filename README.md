@@ -1,93 +1,137 @@
-# 산업 일일 발제 도우미
+<p align="center"><img src="assets/ai-skill-banner.jpg" alt="AI Skill — Built for Real Work, Not Just Demos" width="100%"></p>
 
-산업 뉴스를 훑고도 “그래서 무엇을 기사로 써야 하나”가 선명하지 않을 때 쓰는 발제 지원 스킬입니다. 최근 기사와 공시, 기업 IR, 정부·협회 통계, 산업 자료에서 평소와 다른 숫자나 움직임을 찾고, 그 사실이 기사로 확장될 수 있는지 공개 자료로 검증합니다.
+# 산업 일일 발제 도우미 (HB)
 
-단순한 뉴스 요약은 만들지 않습니다. 하나의 최신 자료에서 눈여겨볼 FACT를 골라 질문으로 바꾸고, 원문에 없던 독립 근거와 시간축, 산업 전체 흐름, 반대 사례를 차례로 대조합니다. 검증을 통과한 후보만 사용자에게 보여주며, 사용자가 선택한 발제에 한해 추가 조사와 기사 작성을 진행합니다.
+최근 7일의 공시와 기사에서 평소와 다른 사실을 찾아, 공개 자료로 검증한 발제 후보를 내는 AI 스킬입니다. 사용자가 고른 발제만 기사와 PDF로 완성합니다.
 
-Claude Code, Cursor, Codex와 웹 AI에서 사용할 수 있습니다.
+Claude Code, Cursor, Codex에서 쓸 수 있고, 웹 AI에서는 프롬프트로 쓸 수 있습니다.
 
----
+## 어떤 문제를 푸나요
 
-## 이 스킬로 할 수 있는 일
+AI에게 "기사 아이템 찾아 줘"라고 하면 보통 기존 기사의 요약이나, 출처 없이 그럴듯한 문장이 나옵니다. 데스크에 그대로 올릴 수 없습니다.
 
-- 최근 7일간 나온 산업 기사와 공식 자료를 넓게 훑습니다.
-- 기사 제목보다 본문 속 작은 수치, 가동률 변화, 재고, 가격, 수출입, 설비 조정, 투자·수주 변동처럼 평소와 다른 FACT를 먼저 찾습니다.
-- 하나의 결론을 정해 놓고 자료를 끼워 맞추지 않습니다.
-- 트리거 자료 밖에서 독립적인 근거를 최소 2개, 가능하면 성격이 다른 3~5개까지 확인합니다.
-- 현재 수치를 전주·전월·전년 동기, 과거 평균, 경쟁사, 업계 평균과 비교합니다.
-- 계획·전망·중간집계와 실제 실적을 구분합니다.
-- 계절성이나 특정 기업만의 사정처럼 발제를 무너뜨릴 수 있는 반론을 먼저 점검합니다.
-- 검증을 통과한 후보를 점수순으로 최대 5개 제시합니다.
-- 사용자가 고른 발제만 심화 조사하고 기사로 작성합니다.
-- 발제 후보, 판정표, 기사, 출처를 한데 모은 PDF와 HTML을 남깁니다.
+HB는 이런 결과가 나오지 않도록 절차를 막아 둡니다.
 
-## 이 스킬의 장점
+- **요약 차단**: 트리거 기사 밖에서 독립 근거를 2건 이상 찾아야 합니다.
+- **추측 차단**: 사실 문장마다 출처를 붙이고, 수치마다 실적·전망·계획 같은 성격을 표시합니다.
+- **혼자 결정 차단**: 세 지점에서 멈추고 사용자의 답을 기다립니다.
 
-### 요약과 발제를 구분합니다
+## 장점
 
-최근 기사를 다시 정리하는 데서 끝나지 않습니다. 기사 안의 여러 사실 중 하나를 골라 별도의 질문으로 확장하고, 원문에 없던 자료로 그 질문이 성립하는지 확인합니다.
+- **요약이 아니라 발제를 만듭니다.** 기사 속 사실 하나를 질문으로 바꾸고 원문 밖 자료로 확인합니다.
+- **출처를 따라가 볼 수 있습니다.** 근거마다 매체, 제목, 날짜, 주소가 붙습니다. 공시가 있으면 보도보다 원문을 우선합니다.
+- **숫자를 같은 기준으로 봅니다.** 기간, 단위, 범위가 다르면 억지로 견주지 않습니다.
+- **반론을 먼저 찾습니다.** 계절성, 기업 특수 사정, 반대 사례를 실제로 검색합니다.
+- **결정은 사람이 합니다.** 범위, 발제, 기사화 여부를 사용자가 정합니다.
 
-예를 들어 어떤 기업의 감산 발표를 발견했다면 “감산했다”는 발생 사실만 전달하지 않습니다. 이전 생산량과 재고, 시장가격, 경쟁사 가동률 등을 확인해 이번 조정이 평소와 무엇이 다른지 살핍니다. 그 차이가 공개 자료로 확인될 때만 발제 후보로 남깁니다.
-
-### 출처를 따라가며 판단할 수 있습니다
-
-중요한 FACT에는 자료명, 기관이나 매체, 날짜, URL을 붙입니다. 검색 결과의 제목이나 요약문만 보고 수치를 확정하지 않고 원문을 직접 확인합니다. 공시가 있는 사안은 보도보다 공시 원문을 우선합니다.
-
-### 숫자를 같은 기준으로 비교합니다
-
-계약금액과 매출, 목표치와 실제 실적, 누적 수치와 월간 수치를 섞지 않습니다. 서로 직접 비교할 때는 기간, 단위, 집계 범위를 맞춥니다. 기준이 다르면 억지로 우열을 만들지 않고 각각의 FACT로 분리합니다.
-
-### 반론을 숨기지 않습니다
-
-발제에 유리한 자료만 모으지 않습니다. 계절적 변화인지, 해당 기업만의 문제인지, 경쟁사는 반대로 움직이는지, 산업 전체 통계와 충돌하지 않는지 확인합니다. 가장 강한 반론을 적용했을 때 야마가 무너지면 후보에서 제외합니다.
-
-### 사람이 선택권을 가집니다
-
-도메인 결정, 발제 선택, 기사화 승인 단계에서 사용자 답을 기다립니다. AI가 임의로 후보 하나를 골라 기사까지 밀어붙이지 않습니다. 같은 자료를 사실 그대로 묶는 방향과 다른 축으로 보는 방향도 함께 제시할 수 있습니다.
-
-### 원인이 공개되지 않은 사안도 제한적으로 다룹니다
-
-회사가 행동의 이유를 직접 밝히지 않았다고 해서 무조건 버리지는 않습니다. 서로 독립적인 기사·공시·통계 2건 이상이 같은 가능성을 가리키고 반대 정황까지 확인했다면 `조건부 O`로 남길 수 있습니다.
-
-다만 정황을 원인으로 단정하지 않습니다. 결과물에는 다음처럼 사실과 해석의 경계를 표시합니다.
-
-> 직접 원인은 공개자료상 확인되지 않았다. 다만 A와 B 정황이 함께 확인됐다.
-
-`조건부 O`는 원인 확인 항목에만 적용하며 8점으로 계산합니다. 공식 원인이 확인된 후보보다 순위가 낮습니다.
-
----
-
-## 작업 흐름
+## 작동 흐름
 
 ```text
 /hb
-  → 현재 시각과 최근 7일 범위 확인
-  → 사용자와 탐색 업종 결정
-  → 기사·공시·IR·통계·산업 자료 탐색
-  → 평소와 다른 FACT 발견
-  → 검증할 질문 설정
-  → 독립 근거와 시간축 수집
-  → 산업 전체 흐름과 반론 대조
-  → 10개 기준을 통과한 후보를 점수순으로 제시
-  → 사용자 발제 선택
-  → 선택한 발제 추가 조사
-  → 사용자 기사화 승인
-  → 기사 작성과 PDF 출력
+ → 현재 시각과 최근 7일 범위 확인
+ → [GATE 1] 사용자가 탐색 업종을 정합니다
+ → 기사·공시·통계 탐색, 평소와 다른 사실 찾기
+ → 독립 근거, 기준선, 반론 대조
+ → 10개 기준을 모두 통과한 후보를 점수순으로 최대 5건 제시
+ → [GATE 2] 사용자가 발제를 고릅니다
+ → 추가 조사와 확정 판정
+ → [GATE 3] 사용자가 기사화를 승인합니다
+ → 기사 작성, PDF·HTML 출력
 ```
 
-발제의 출발점이 되는 트리거는 최근 7일 이내 자료로 제한합니다. 후보가 부족해도 10일로 늘리지 않습니다. 대신 같은 7일 안에서 업종, 기업, 검색어, 자료 유형을 바꿔 다시 찾습니다. 과거 비교와 산업 맥락, 반론에 쓰는 자료에는 기간 제한이 없습니다.
+트리거는 최근 7일 안의 자료로만 잡습니다. 후보가 모자라도 기간을 늘리거나 기준을 낮추지 않고, 같은 기간 안에서 다시 찾습니다. 과거 비교와 반론 자료에는 기간 제한이 없습니다.
 
-## 탐색하는 자료
+## 설치
 
-| 우선순위 | 자료 | 쓰임 |
-|---|---|---|
-| 1 | 기업 공시·IR·보도자료 | 계약, 실적, 계획, 회사 설명 확인 |
-| 2 | 정부·공공기관·협회·공식 통계 | 산업 규모, 수출입, 가격, 생산·가동 지표 확인 |
-| 3 | 연합뉴스·뉴시스·뉴스1·Reuters·AP | 최근 사건과 발표의 빠른 확인 |
-| 4 | 증권사 리포트·산업 브리핑 | 수치 해설과 비교 기준 보강 |
-| 5 | 주요 신문과 산업 전문매체 | 취재 내용, 업계 반응, 세부 맥락 확인 |
+Node는 새 도구를 쓸 때만 필요합니다. 스킬만 쓴다면 첫 번째 단계로 충분합니다.
 
-유료 기사만으로는 핵심 근거를 확정하지 않습니다. 같은 내용을 확인할 수 있는 무료 원자료를 더 찾고, 확보하지 못하면 공개 자료에서 확인되지 않았다고 표시합니다.
+**1. 스킬 설치** (`TOOL` 은 `.claude`, `.cursor`, `.agents` 중 하나입니다)
+
+```bash
+TOOL=.claude
+BASE=https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
+mkdir -p ~/$TOOL/skills/hb ~/$TOOL/agents
+curl -fsSL $BASE/$TOOL/skills/hb/SKILL.md -o ~/$TOOL/skills/hb/SKILL.md
+curl -fsSL $BASE/$TOOL/agents/hb-agent.md -o ~/$TOOL/agents/hb-agent.md
+```
+
+**2. PDF 출력과 새 도구 설치** (선택)
+
+```bash
+SKILL=~/$TOOL/skills/hb
+mkdir -p $SKILL/templates $SKILL/scripts $SKILL/config
+for f in templates/report.html scripts/make-pdf.ps1 scripts/make-pdf.sh \
+         scripts/collect-signals.mjs scripts/score-challenge.mjs scripts/check-failure-patterns.mjs \
+         config/collector.sources.json config/industry-templates.json; do
+  curl -fsSL $BASE/$f -o $SKILL/$f
+done
+```
+
+이 파일이 없어도 스킬은 실행됩니다. 없는 도구의 단계만 건너뜁니다.
+
+**웹 AI**: [`PROMPT.md`](./PROMPT.md)의 지침을 프로젝트 지침이나 Custom GPT Instructions, Gem 지침에 붙여 넣으세요. 셸이 없어 새 도구는 쓸 수 없습니다.
+
+스킬이 보이지 않으면 Claude Code와 Codex는 다시 시작하고, Cursor는 `Reload Window`를 실행해 주세요.
+
+## 첫 실행과 호출 예시
+
+| 도구 | 호출 |
+|---|---|
+| Claude Code, Cursor | `/hb` |
+| Codex | `$hb` 또는 `/skills` |
+| 웹 AI | `/hb` 또는 "발제 뽑아줘" |
+
+```text
+/hb
+/hb 배터리 쪽으로만
+/hb 조선 중심으로 발제 찾아줘
+```
+
+첫 실행에서는 현재 시각과 탐색 범위를 보여 주고 어느 업종을 볼지 묻습니다. 답하면 탐색을 시작합니다. 기본 업종은 항공, 석화, 조선, 배터리, 전선, 정유, 석유화학, LCC항공이고 대기업 중심입니다.
+
+결과는 작업 폴더의 `HB_Output/` 에 PDF와 HTML로 저장합니다. 기존 파일은 덮어쓰지 않습니다.
+
+## 새 기능
+
+세 도구 모두 Node 표준 라이브러리만 씁니다. 아래 명령은 저장소를 받은 폴더에서 실행하는 예시이고, 스킬로 쓸 때는 SKILL이 알맞은 단계에서 호출합니다.
+
+### 공시·기사 수집
+
+DART 공시, 경제지 RSS, 통계 발표 일정을 모아 이상 신호 후보를 만듭니다.
+
+```bash
+node scripts/collect-signals.mjs
+```
+
+- 결과는 전부 **본문 확인 전 후보**입니다. 원문을 열어 확인한 것만 근거로 씁니다.
+- 실시간이 아니라 돌린 시점에 모으는 주기 수집입니다. 웹 검색을 대신하지 않습니다.
+- DART 키는 환경변수 `DART_API_KEY` 로만 받습니다. 없으면 공시를 건너뛰었다고 적고 나머지를 모읍니다.
+- 일부 언론사는 RSS 이용을 제한합니다. 제한 문구를 확인한 피드는 기본으로 꺼 두었고, 주소를 확인하지 못한 피드는 빈 칸으로 두었습니다.
+
+키 등록, 예약 실행, 피드 조건은 [`docs/신호_수집.md`](docs/신호_수집.md)를 봐 주세요.
+
+### 산업별 팩트 템플릿
+
+조선, 배터리, 정유, 석유화학, 항공, 전선의 지표 정의와 단위, 비교 기준, 흔한 오독을 [`config/industry-templates.json`](config/industry-templates.json)에 모았습니다. 공통 10체크는 그대로 두고 수치를 판정할 때 대조합니다. 수치 예시는 넣지 않았고, 정의를 어디까지 확인했는지 지표마다 표시했습니다. 자세한 내용은 [`docs/산업별_템플릿.md`](docs/산업별_템플릿.md)에 있습니다.
+
+### 반론 근거 점수와 과거 실패 대조
+
+```bash
+node scripts/score-challenge.mjs --input 반론결과.json
+node scripts/check-failure-patterns.mjs check --input 후보.json --log hb/failure-log.jsonl
+```
+
+- **근거 점수**는 `SURVIVES`, `WEAKENED`, `COLLAPSES` 판정 옆에 붙습니다. 반론 출처의 티어, 수치 재현, 거시 변수 통제, 비교 기준을 규칙으로 계산합니다. 야마가 옳은지를 재는 점수가 아닙니다.
+- **실패 대조**는 사람이 적은 오발제·실패 기획 기록과 새 후보를 규칙으로 비교해 경고합니다. 학습하지 않습니다. 처음에는 기록이 비어 있고, 빈 상태에서도 동작합니다.
+- 어느 쪽도 후보를 자동으로 통과시키거나 탈락시키지 않습니다. 세 번의 사용자 게이트는 그대로입니다.
+
+규칙과 기록 형식은 [`docs/반론_점수와_실패_대조.md`](docs/반론_점수와_실패_대조.md)에 있습니다.
+
+### 시험
+
+```bash
+npm test
+```
 
 ## 후보 판정 기준
 
@@ -104,152 +148,36 @@ Claude Code, Cursor, Codex와 웹 AI에서 사용할 수 있습니다.
 | 9 | 기존 기사와 차이 | 이미 반복된 결론이나 단순 수치 갱신이 아닌가 |
 | 10 | 산업적 의미 | 산업 전체 자료와 대조해도 의미가 유지되는가 |
 
-각 항목은 0~10점으로 평가합니다.
-
-- `O`: 8~10점
-- `조건부 O`: 원인 확인 항목에만 적용, 8점
-- `△`: 5~7점
-- `X`: 0~4점
-
-10개 항목이 모두 `O`여야 최종 후보로 제시합니다. 원인 확인의 `조건부 O`는 통과로 인정합니다. 내부에서는 후보를 폭넓게 찾되 결과 화면에는 점수가 높은 순서로 최대 5개만 보여줍니다. 5개를 채우지 못하면 7일 범위 안에서 두 차례 재탐색하고, 그래도 부족하면 기준을 낮추지 않고 통과한 후보만 제시합니다.
-
-보도량, 조회수, 좋아요 수로 후보를 거르지 않습니다. 다만 최종 야마가 기존 기사에서 반복된 결론인지 확인합니다. 새 FACT가 기존 설명의 변화, 반전, 예외나 임계점을 보여주지 못한다면 후보에서 제외합니다.
-
----
-
-## 설치
-
-사용하는 도구에 맞는 스킬 파일과 PDF 템플릿, 변환 스크립트를 설치하면 됩니다.
-
-### Claude Code
-
-```bash
-mkdir -p ~/.claude/skills/hb ~/.claude/agents
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.claude/skills/hb/SKILL.md \
-  -o ~/.claude/skills/hb/SKILL.md
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.claude/agents/hb-agent.md \
-  -o ~/.claude/agents/hb-agent.md
-```
-
-### Cursor
-
-```bash
-mkdir -p ~/.cursor/skills/hb ~/.cursor/agents
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.cursor/skills/hb/SKILL.md \
-  -o ~/.cursor/skills/hb/SKILL.md
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.cursor/agents/hb-agent.md \
-  -o ~/.cursor/agents/hb-agent.md
-```
-
-### Codex
-
-```bash
-mkdir -p ~/.agents/skills/hb ~/.agents/agents
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.agents/skills/hb/SKILL.md \
-  -o ~/.agents/skills/hb/SKILL.md
-curl -fsSL https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main/.agents/agents/hb-agent.md \
-  -o ~/.agents/agents/hb-agent.md
-```
-
-### PDF 출력 파일
-
-PDF를 자동으로 만들려면 템플릿과 변환 스크립트도 설치해야 합니다.
-
-```bash
-BASE=https://raw.githubusercontent.com/ccw00325-spec/journalist-skill/main
-SKILL=~/.claude/skills/hb  # Cursor: ~/.cursor/skills/hb, Codex: ~/.agents/skills/hb
-
-mkdir -p $SKILL/templates $SKILL/scripts
-curl -fsSL $BASE/templates/report.html -o $SKILL/templates/report.html
-curl -fsSL $BASE/scripts/make-pdf.ps1 -o $SKILL/scripts/make-pdf.ps1
-curl -fsSL $BASE/scripts/make-pdf.sh -o $SKILL/scripts/make-pdf.sh
-chmod +x $SKILL/scripts/make-pdf.sh
-```
-
-템플릿이 없어도 스킬은 실행됩니다. 이 경우 인라인 CSS로 HTML을 만들며, PDF 변환기를 찾지 못하면 HTML을 남기고 브라우저 인쇄 방법을 안내합니다.
-
-### 웹 AI
-
-[`PROMPT.md`](./PROMPT.md)의 지침을 프로젝트 지침, Custom GPT Instructions 또는 Gem 지침에 붙여넣습니다.
-
-설치 후 스킬이 보이지 않으면 Claude Code와 Codex는 다시 시작하고, Cursor는 `Reload Window`를 실행합니다.
-
----
-
-## 사용법
-
-| 도구 | 호출 방법 |
-|---|---|
-| Claude Code | `/hb` |
-| Cursor | `/hb` |
-| Codex | `$hb` 또는 `/skills` |
-| 웹 AI | `/hb` 또는 “발제 뽑아줘” |
-
-```text
-/hb
-/hb 배터리 쪽으로만
-/hb 조선과 방산 중심으로 발제 찾아줘
-```
-
-기본 탐색 업종은 항공, 석화, 조선, 배터리, 전선, 정유, 석유화학, LCC항공이며 대기업을 중심으로 봅니다. 도메인을 변경하면 CLI 환경에서는 설정 파일에 저장해 다음 호출에도 적용합니다.
-
----
-
-## 결과물
-
-CLI가 접근할 수 있는 작업 폴더 아래에 `HB_Output`을 만들고 PDF와 HTML을 저장합니다.
-
-```text
-<작업폴더>/HB_Output/2026_08_12_2246output.pdf
-<작업폴더>/HB_Output/2026_08_12_2246output.html
-```
-
-파일명은 `YYYY_MM_DD_HHmmoutput` 형식입니다. 같은 분에 다시 실행해 이름이 겹치면 `_2`, `_3`을 붙이며 기존 결과를 덮어쓰지 않습니다. 폴더를 만든 뒤 실제 존재 여부를 확인하므로 권한 문제로 파일이 조용히 사라지는 일을 줄였습니다.
-
-PDF에는 다음 내용이 들어갑니다.
-
-1. 생성 시각, 탐색 기간, 도메인
-2. 최종 발제 후보와 10개 판정표, 점수, 순위
-3. 각 후보의 트리거, 독립 근거, 시간축, 반론, 출처
-4. 사용자가 선택한 발제의 추가 검증 결과
-5. 제목, 부제, 완성 기사
-6. 기사에 사용한 전체 출처
-
----
-
-## 함께 제공되는 조사 에이전트
-
-`hb-agent`는 업종과 기업별 자료 수집을 나눠 맡는 읽기 전용 에이전트입니다.
-
-- `GATHER`: 원문을 열어 날짜와 수치를 확인하고 사실 목록을 정리합니다.
-- `CHALLENGE`: 발제의 가장 강한 반론을 찾아 `SURVIVES`, `WEAKENED`, `COLLAPSES`로 판정합니다.
-
-업종이 많거나 비교할 기업이 여러 곳일 때 조사 시간을 줄이는 데 도움이 됩니다.
+각 항목을 0~10점으로 평가해 100점으로 환산합니다. 10개가 모두 `O`(8점 이상)여야 후보로 제시합니다. 회사가 원인을 직접 밝히지 않은 경우에는 독립 자료 2건 이상과 반대 정황을 확인했을 때만 4번을 `조건부 O`로 남기며, 정황을 원인으로 단정하지 않습니다.
 
 ## 저장소 구성
 
 ```text
-.claude/skills/hb/SKILL.md      Claude Code용 스킬
-.claude/agents/hb-agent.md      Claude Code용 조사 에이전트
-.cursor/skills/hb/SKILL.md      Cursor용 스킬
-.cursor/agents/hb-agent.md      Cursor용 조사 에이전트
-.agents/skills/hb/SKILL.md      Codex용 스킬
-.agents/agents/hb-agent.md      Codex용 조사 에이전트
-PROMPT.md                       웹 AI용 지침
-templates/report.html           A4 PDF 리포트 템플릿
-scripts/make-pdf.ps1            Windows PDF 변환 스크립트
-scripts/make-pdf.sh             macOS·Linux PDF 변환 스크립트
-config/domains.default.json     기본 산업 도메인
+.claude/ .cursor/ .agents/       도구별 스킬과 조사 에이전트(hb-agent)
+PROMPT.md                        웹 AI용 지침
+templates/report.html            PDF 리포트 템플릿
+scripts/make-pdf.ps1, make-pdf.sh  PDF 변환
+scripts/collect-signals.mjs      공시·기사·일정 후보 수집
+scripts/score-challenge.mjs      반론 근거 점수
+scripts/check-failure-patterns.mjs  과거 실패 대조
+config/domains.default.json      기본 업종
+config/collector.sources.json    수집 소스와 키워드
+config/industry-templates.json   산업별 지표 점검표
+docs/                            새 기능 설명
+test/                            시험
 ```
 
-## 알아둘 점
+## 한계
 
-- 웹 검색 기능이 없으면 최신 자료를 검증할 수 없습니다. 이 경우 내용을 만들어내지 않고 검색이 불가능하다고 알립니다.
-- 유료 기사나 비공개 리포트만으로는 핵심 FACT를 확정하지 않습니다.
-- 스킬은 발제 후보와 검증 자료를 정리하지만, 최종 기사 가치와 게재 여부는 사용자가 판단합니다.
-
----
+- 웹 검색이 없으면 최신 자료를 검증할 수 없습니다. 이때는 내용을 만들지 않고 검색이 불가능하다고 알립니다.
+- 유료 기사나 비공개 리포트만으로는 핵심 사실을 확정하지 않습니다.
+- 수집 도구는 문자열로 후보를 거를 뿐, 무엇이 평소와 다른지 판단하지 않습니다. 놓치는 공시와 기사가 있을 수 있습니다.
+- DART 수집은 공식 가이드 형식에 맞춘 가짜 응답으로 시험했습니다. 실제 키로 돌려 본 적은 없습니다.
+- 점수의 배점과 경고 기준은 실제 기사 데이터로 검증하지 않은 규칙입니다. 입력이 틀리면 점수도 틀립니다.
+- 산업 템플릿의 일부 정의는 공식 문서를 끝까지 확인하지 못했습니다. `verification` 값을 먼저 봐 주세요.
+- 최종 기사 가치와 게재 여부는 사용자가 판단합니다.
+- 영어 안내([`README.en.md`](README.en.md))에는 이번 기능이 반영되어 있지 않습니다.
 
 ## 라이선스
 
-Apache License 2.0을 적용합니다. 저작권은 Chan Woo Cho ([@ccw00325-spec](https://github.com/ccw00325-spec))에게 있습니다. 재배포 시 Apache 2.0 제4조에 따라 관련 저작권과 출처 고지를 보존해야 합니다. [LICENSE](LICENSE) · [NOTICE](NOTICE)
+Apache License 2.0을 적용합니다. 저작권은 Chan Woo Cho ([@ccw00325-spec](https://github.com/ccw00325-spec))에게 있습니다. 재배포할 때는 Apache 2.0 제4조에 따라 저작권과 출처 고지를 보존해야 합니다. [LICENSE](LICENSE) · [NOTICE](NOTICE)

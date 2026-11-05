@@ -1,0 +1,16 @@
+{
+  "name": "journalist-skill",
+  "private": true,
+  "description": "HB 산업 발제 스킬의 수집·점수·실패 대조 도구와 시험",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "collect": "node scripts/collect-signals.mjs",
+    "score": "node scripts/score-challenge.mjs",
+    "failures": "node scripts/check-failure-patterns.mjs"
+  }
+}

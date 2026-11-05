@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "checked_on": "2026-11-05",
+  "notice": "이 파일의 주소는 확인일에 실제 응답을 받아 본 것만 적었습니다. 주소가 빈 칸인 항목은 확인하지 못한 자리이니 공식 안내를 보고 직접 채워 주세요.",
+  "window_days": 7,
+  "calendar_lookahead_days": 7,
+  "max_candidates": 300,
+  "user_agent": "journalist-skill-collector/1 (+https://github.com/ccw00325-spec/journalist-skill)",
+  "timeout_ms": 20000,
+  "dart": {
+    "enabled": true,
+    "spec_url": "https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DS001&apiId=2019001",
+    "api_url": "https://opendart.fss.or.kr/api/list.json",
+    "viewer_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=",
+    "pblntf_ty": ["B", "I"],
+    "corp_cls": "Y",
+    "page_count": 100,
+    "max_pages": 3,
+    "report_keywords": [
+      "단일판매공급계약",
+      "신규시설투자",
+      "유형자산양수",
+      "유형자산양도",
+      "타법인주식및출자증권양수",
+      "타법인주식및출자증권양도",
+      "영업양수",
+      "영업양도",
+      "영업정지",
+      "회사합병",
+      "회사분할",
+      "소송등의제기"
+    ]
+  },
+  "rss_feeds": [
+    {
+      "name": "한국경제 경제",
+      "url": "https://www.hankyung.com/feed/economy",
+      "guide_url": "https://www.hankyung.com/feed",
+      "tier": "T2",
+      "enabled": true,
+      "terms_note": "RSS 안내 페이지와 피드의 저작권 문구만 확인했습니다. 약관 전문은 사용자가 확인해 주세요."
+    },
+    {
+      "name": "머니투데이 최신기사",
+      "url": "https://rss.mt.co.kr/mt_news.xml",
+      "guide_url": "",
+      "tier": "T3",
+      "enabled": true,
+      "terms_note": "피드 응답과 저작권 문구만 확인했습니다. 공식 RSS 안내 페이지는 찾지 못했습니다."
+    },
+    {
+      "name": "이투데이 전체기사",
+      "url": "https://rss.etoday.co.kr/eto/etoday_news_all.xml",
+      "guide_url": "",
+      "tier": "T3",
+      "enabled": true,
+      "terms_note": "피드 응답과 저작권 문구만 확인했습니다. 공식 RSS 안내 페이지는 찾지 못했습니다."
+    },
+    {
+      "name": "파이낸셜뉴스 실시간뉴스",
+      "url": "https://www.fnnews.com/rss/r20/fn_realnews_all.xml",
+      "guide_url": "",
+      "tier": "T3",
+      "enabled": true,
+      "terms_note": "피드 응답과 저작권 문구만 확인했습니다. 공식 RSS 안내 페이지는 찾지 못했습니다."
+    },
+    {
+      "name": "연합뉴스 경제",
+      "url": "https://www.yna.co.kr/rss/economy.xml",
+      "guide_url": "https://www.yna.co.kr/rss/index",
+      "tier": "T1",
+      "enabled": false,
+      "terms_note": "연합뉴스는 RSS를 비상업적 블로그와 개인적인 용도로만 허용하고, 피드에 'AI 학습 및 활용 금지'를 적어 둡니다. 조건을 확인한 뒤 직접 켜 주세요."
+    },
+    {
+      "name": "연합뉴스 산업",
+      "url": "https://www.yna.co.kr/rss/industry.xml",
+      "guide_url": "https://www.yna.co.kr/rss/index",
+      "tier": "T1",
+      "enabled": false,
+      "terms_note": "연합뉴스는 RSS를 비상업적 블로그와 개인적인 용도로만 허용하고, 피드에 'AI 학습 및 활용 금지'를 적어 둡니다. 조건을 확인한 뒤 직접 켜 주세요."
+    },
+    {
+      "name": "매일경제 경제",
+      "url": "https://www.mk.co.kr/rss/30100041/",
+      "guide_url": "https://www.mk.co.kr/rss/",
+      "tier": "T2",
+      "enabled": false,
+      "terms_note": "매일경제 안내 페이지 하단에 '무단 전재, 재배포 및 AI학습 이용 금지'가 적혀 있습니다. 조건을 확인한 뒤 직접 켜 주세요."
+    },
+    {
+      "name": "매일경제 기업/경영",
+      "url": "https://www.mk.co.kr/rss/50100032/",
+      "guide_url": "https://www.mk.co.kr/rss/",
+      "tier": "T2",
+      "enabled": false,
+      "terms_note": "매일경제 안내 페이지 하단에 '무단 전재, 재배포 및 AI학습 이용 금지'가 적혀 있습니다. 조건을 확인한 뒤 직접 켜 주세요."
+    },
+    {
+      "name": "서울경제 기업",
+      "url": "https://www.sedaily.com/rss/business",
+      "guide_url": "https://www.sedaily.com/rss",
+      "tier": "T3",
+      "enabled": false,
+      "terms_note": "서울경제는 RSS를 개인 이용자의 비상업적 사용에만 허용하고, 다수 이용자 대상 상업적 활용과 AI학습 이용을 금지합니다. 조건을 확인한 뒤 직접 켜 주세요."
+    },
+    {
+      "name": "뉴시스 (사용자 입력)",
+      "url": "",
+      "guide_url": "",
+      "tier": "T1",
+      "enabled": false,
+      "terms_note": "공식 피드 주소를 확인하지 못해 비워 두었습니다."
+    },
+    {
+      "name": "뉴스1 (사용자 입력)",
+      "url": "",
+      "guide_url": "",
+      "tier": "T1",
+      "enabled": false,
+      "terms_note": "공식 피드 주소를 확인하지 못해 비워 두었습니다."
+    },
+    {
+      "name": "대한민국 정책브리핑 보도자료 (사용자 입력)",
+      "url": "",
+      "guide_url": "",
+      "tier": "T1+",
+      "enabled": false,
+      "terms_note": "공식 피드 주소를 확인하지 못해 비워 두었습니다."
+    }
+  ],
+  "calendar": {
+    "reference_pages": [
+      {
+        "name": "국가통계 공표일정 (KOSIS)",
+        "publisher": "국가통계포털",
+        "url": "https://kosis.kr/serviceInfo/statisPublicationList.do",
+        "note": "통계명, 작성기관, 공표주기, 결과공표 예정월을 안내합니다. 날짜가 아니라 월 단위로 볼 수 있어 자동으로 날짜를 만들지 않습니다."
+      }
+    ],
+    "recurring": [
+      {
+        "name": "수출입 현황 잠정치 (관세청)",
+        "publisher": "관세청",
+        "reference_url": "https://eiec.kdi.re.kr/policy/materialList.do?pg=&pp=20&topic=O",
+        "days_of_month": [1, 11, 21],
+        "basis": "observed_not_official",
+        "note": "공식 일정표가 아니라 지난 발표에서 관찰한 날짜입니다. 주말·공휴일이면 밀릴 수 있으니 발표 원문으로 확인해 주세요.",
+        "industries": []
+      }
+    ],
+    "events": []
+  },
+  "signal_terms": [
+    "감산", "증산", "가동률", "가동 중단", "가동중단", "휴동", "폐쇄", "철수", "매각",
+    "재고", "수주", "발주", "수출", "수입", "증설", "투자 철회", "투자 축소", "계약 해지",
+    "생산계획", "생산 계획", "선가", "스프레드", "정제마진", "판가", "래깅", "역마진"
+  ],
+  "industries": [
+    {
+      "name": "조선",
+      "keywords": ["조선", "조선사", "선박", "LNG운반선", "수주잔고", "수주잔량", "CGT", "신조선가"],
+      "exclude": ["조선일보", "조선비즈", "조선왕조", "조선시대", "북조선", "조선중앙"],
+      "companies": ["HD한국조선해양", "HD현대중공업", "한화오션", "삼성중공업"]
+    },
+    {
+      "name": "배터리",
+      "keywords": ["배터리", "이차전지", "양극재", "음극재", "리튬", "니켈", "AMPC"],
+      "exclude": [],
+      "companies": ["LG에너지솔루션", "삼성SDI", "SK온", "에코프로", "포스코퓨처엠"]
+    },
+    {
+      "name": "석유화학",
+      "keywords": ["석유화학", "석화", "납사", "나프타", "에틸렌", "NCC", "프로필렌"],
+      "exclude": [],
+      "companies": ["LG화학", "롯데케미칼", "한화솔루션", "금호석유화학", "여천NCC"]
+    },
+    {
+      "name": "정유",
+      "keywords": ["정유", "정제마진", "원유", "두바이유", "항공유", "래깅"],
+      "exclude": [],
+      "companies": ["SK이노베이션", "SK에너지", "에쓰오일", "S-Oil", "GS칼텍스", "HD현대오일뱅크"]
+    },
+    {
+      "name": "항공",
+      "keywords": ["항공사", "항공유", "LCC", "저비용항공", "탑승률", "여객"],
+      "exclude": [],
+      "companies": ["대한항공", "아시아나항공", "제주항공", "진에어", "티웨이항공", "에어부산", "이스타항공"]
+    },
+    {
+      "name": "전선",
+      "keywords": ["전선", "해저케이블", "초고압", "구리"],
+      "exclude": ["최전선", "격전선", "전선에", "전선을", "접전선", "전선 확대"],
+      "companies": ["LS전선", "대한전선", "LS에코에너지", "가온전선"]
+    }
+  ]
+}
